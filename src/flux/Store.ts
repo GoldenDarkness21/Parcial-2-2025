@@ -1,11 +1,32 @@
 import { AppDispatcher, Action } from './Dispatcher';
 
-export type State = {};
+export type plantas = { 
+    id: number,
+    commonName: string,
+    scientificName: string,
+    img: string,
+    type: string,
+    origin: string,
+    floweringseason: string,
+    sunExposure: string,
+    watering: string
+    
+ };
+
+ 
+
+export type State = {
+    plants: plantas[]
+
+};
 
 type Listener = (state: State) => void;
 
 class Store {
-    private _myState: State = {}
+    private _myState: State = {
+        plants: []
+
+    }
 
     private _listeners: Listener[] = [];
 
@@ -32,3 +53,5 @@ class Store {
 }
 
 export const store = new Store();
+
+

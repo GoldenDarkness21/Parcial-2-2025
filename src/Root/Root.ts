@@ -1,4 +1,5 @@
 import { store } from '../flux/Store';
+import '../components/GardenModifier';
 
 class Root extends HTMLElement {
     constructor() {
@@ -8,12 +9,20 @@ class Root extends HTMLElement {
 
     connectedCallback() {
         this.render();
+        store.unsubscribe(() => this.render());
     }
 
     render() {
+
         if (!this.shadowRoot) return;
 
-        this.shadowRoot.innerHTML = `app`;
+        this.shadowRoot.innerHTML = `
+        
+        <style>
+        </style>
+
+        <garden-modifier></garden-modifier>
+        `;
     }
 }
 
